@@ -11,115 +11,88 @@
             --dark: #000;
             --gray: #6C6C6C;
             --peach: #F7E2DA;
-            --hire: #E8455A;
+            --h1: #E8455A;
+            --h2: #E87A1A;
+            --h3: #2E86C1;
+            --h4: #6C3483;
             --dot: #7B5EA7;
+            --float: #00a882;
             --ext: #888;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--peach);
-            overflow: hidden;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--peach); overflow: hidden; }
         .deck { width: 100vw; height: 100vh; position: relative; }
-
-        .slide {
-            position: absolute; inset: 0;
-            display: none; flex-direction: column;
-            padding: 40px 48px 32px;
-            background: var(--peach);
-        }
+        .slide { position: absolute; inset: 0; display: none; flex-direction: column; padding: 38px 46px 30px; background: var(--peach); }
         .slide.on { display: flex; }
 
-        /* ── shared node ── */
-        .n {
-            background: white; border: 1.5px solid #d8d0cc;
-            border-radius: 7px; padding: 5px 10px; text-align: center;
-        }
+        /* nodes */
+        .n { background: white; border: 1.5px solid #d8d0cc; border-radius: 7px; padding: 5px 9px; text-align: center; }
         .n .r { font-size: 10px; font-weight: 700; color: var(--dark); line-height: 1.3; }
-        .n .s { font-size: 8.5px; color: var(--gray); margin-top: 1px; }
-        .n.hire { border: 1.5px dashed var(--hire); background: #fff4f5; }
-        .n.hire .r { color: var(--hire); }
-        .n.dotted { border: 1.5px dashed var(--dot); background: #f5f2ff; }
-        .n.dotted .r { color: var(--dot); }
-        .n.ext { border: 1.5px solid #bbb; background: #f5f5f5; }
-        .n.ext .r { color: var(--ext); }
+        .n .s { font-size: 8px; color: var(--gray); margin-top: 1px; }
         .n.head { border: 2px solid var(--dark); border-radius: 9px; padding: 7px 14px; }
         .n.head .r { font-size: 12px; }
         .n.spoke-head { border: 2px solid var(--dark); border-radius: 8px; padding: 6px 12px; width: 100%; }
         .n.spoke-head .r { font-size: 11px; }
+        .n.h1 { border: 1.5px dashed var(--h1); background: #fff4f5; }
+        .n.h1 .r { color: var(--h1); }
+        .n.h2 { border: 1.5px dashed var(--h2); background: #fff8f3; }
+        .n.h2 .r { color: var(--h2); }
+        .n.h3 { border: 1.5px dashed var(--h3); background: #f0f7ff; }
+        .n.h3 .r { color: var(--h3); }
+        .n.h4 { border: 1.5px dashed var(--h4); background: #f9f4ff; }
+        .n.h4 .r { color: var(--h4); }
+        .n.dotted { border: 1.5px dashed var(--dot); background: #f5f2ff; }
+        .n.dotted .r { color: var(--dot); }
+        .n.float { border: 1.5px dashed var(--float); background: #f0fff9; }
+        .n.float .r { color: var(--float); }
+        .n.ext { border: 1.5px solid #bbb; background: #f5f5f5; }
+        .n.ext .r { color: var(--ext); }
 
-        .bdg {
-            display: inline-block; font-size: 7px; font-weight: 700;
-            padding: 1px 5px; border-radius: 5px; margin-top: 2px; letter-spacing: 0.5px;
-        }
-        .bdg.hire { background: var(--hire); color: white; }
-        .bdg.dot  { background: var(--dot);  color: white; }
-        .bdg.ext  { background: var(--ext);  color: white; }
+        .bdg { display: inline-block; font-size: 7px; font-weight: 700; padding: 1px 5px; border-radius: 5px; margin-top: 2px; letter-spacing: 0.4px; }
+        .bdg.h1 { background: var(--h1); color: white; }
+        .bdg.h2 { background: var(--h2); color: white; }
+        .bdg.h3 { background: var(--h3); color: white; }
+        .bdg.h4 { background: var(--h4); color: white; }
+        .bdg.dot { background: var(--dot); color: white; }
+        .bdg.ext { background: var(--ext); color: white; }
 
-        /* connectors */
         .vl { width: 2px; background: #bbb; margin: 0 auto; }
         .hl { height: 2px; background: #bbb; }
 
-        /* pod box */
-        .pod {
-            border: 1.5px solid #ccc5c0; border-radius: 10px;
-            padding: 7px 8px; background: rgba(255,255,255,0.4);
-            display: flex; flex-direction: column; align-items: center; gap: 0;
-        }
-        .pod-lbl {
-            font-size: 7.5px; font-weight: 700; letter-spacing: 1.5px;
-            text-transform: uppercase; color: var(--gray); margin-bottom: 4px;
-        }
+        .pod { border: 1.5px solid #ccc5c0; border-radius: 10px; padding: 7px 8px; background: rgba(255,255,255,0.4); display: flex; flex-direction: column; align-items: center; gap: 0; }
+        .pod-lbl { font-size: 7.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+        .hub-chip { background: var(--dark); color: var(--teal); font-size: 8.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 13px; border-radius: 20px; margin-bottom: 5px; }
+        .spoke-chip { background: var(--dark); color: var(--teal); font-size: 7.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 10px; border-radius: 10px; margin-bottom: 4px; }
 
-        /* chips */
-        .hub-chip {
-            background: var(--dark); color: var(--teal);
-            font-size: 8.5px; font-weight: 700; letter-spacing: 2px;
-            text-transform: uppercase; padding: 3px 13px;
-            border-radius: 20px; margin-bottom: 5px;
-        }
-        .spoke-chip {
-            background: var(--dark); color: var(--teal);
-            font-size: 7.5px; font-weight: 700; letter-spacing: 1.5px;
-            text-transform: uppercase; padding: 2px 10px;
-            border-radius: 10px; margin-bottom: 4px;
-        }
+        .legend { display: flex; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; justify-content: center; }
+        .leg { display: flex; align-items: center; gap: 4px; font-size: 8.5px; color: var(--gray); }
+        .ls { width: 11px; height: 11px; border-radius: 3px; }
 
-        /* legend */
-        .legend { display: flex; gap: 14px; margin-bottom: 7px; flex-wrap: wrap; }
-        .leg { display: flex; align-items: center; gap: 4px; font-size: 9px; color: var(--gray); }
-        .ls { width: 12px; height: 12px; border-radius: 3px; }
-
-        /* nav */
-        .pg { position: absolute; bottom: 18px; right: 32px; font-size: 11px; color: var(--gray); }
-        .dots { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; }
+        .pg { position: absolute; bottom: 16px; right: 30px; font-size: 11px; color: var(--gray); }
+        .dots { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; }
         .dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; cursor: pointer; }
         .dot.on { background: var(--dark); }
-        .logo { position: absolute; top: 16px; left: 32px; }
+        .logo { position: absolute; top: 14px; left: 30px; }
 
-        /* ── summary slide ── */
-        .sg { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; flex: 1; }
-        .sc {
-            background: white; border-radius: 11px; padding: 16px 18px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            display: flex; flex-direction: column; gap: 6px;
+        /* hiring timeline slide */
+        .phase-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 11px; flex: 1; }
+        .phase-col { display: flex; flex-direction: column; gap: 7px; }
+        .phase-hdr {
+            border-radius: 8px; padding: 8px 10px; text-align: center;
+            font-size: 10px; font-weight: 700; color: white; margin-bottom: 2px;
         }
-        .sc .cn {
-            width: 24px; height: 24px; background: var(--dark); color: var(--teal);
-            border-radius: 50%; font-size: 11px; font-weight: 700;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .hire-card { background: white; border-radius: 8px; padding: 8px 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .hire-card .role { font-size: 10.5px; font-weight: 700; margin-bottom: 2px; }
+        .hire-card .why { font-size: 9px; color: var(--gray); line-height: 1.4; }
+        .hire-card .loc { font-size: 8px; font-weight: 600; margin-top: 3px; letter-spacing: 0.3px; }
+
+        /* summary */
+        .sg { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
+        .sc { background: white; border-radius: 11px; padding: 15px 17px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 5px; }
+        .sc .cn { width: 23px; height: 23px; background: var(--dark); color: var(--teal); border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
         .sc h3 { font-size: 13px; font-weight: 700; }
-        .sc p { font-size: 11.5px; color: var(--gray); line-height: 1.55; }
-        .tag {
-            display: inline-block; font-size: 9.5px; font-weight: 600;
-            padding: 1px 6px; border-radius: 6px; background: #f0ebe7;
-            color: var(--dark); margin: 2px 2px 0 0;
-        }
-        .bn {
-            text-align: center; font-size: 11px; color: var(--gray);
-            padding: 9px 0 0; border-top: 1px solid #e0d0ca; margin-top: 3px;
-        }
+        .sc p { font-size: 11px; color: var(--gray); line-height: 1.5; }
+        .tag { display: inline-block; font-size: 9px; font-weight: 600; padding: 1px 6px; border-radius: 6px; background: #f0ebe7; color: var(--dark); margin: 2px 2px 0 0; }
+        .bn { text-align: center; font-size: 11px; color: var(--gray); padding: 8px 0 0; border-top: 1px solid #e0d0ca; margin-top: 3px; }
         .bn strong { color: var(--dark); }
     </style>
 </head>
@@ -130,255 +103,297 @@
      SLIDE 1 — ORG CHART
 ══════════════════════════════════ -->
 <div class="slide on">
-    <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="90" height="30"><defs><linearGradient id="zg" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs><rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/><path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/><polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/><path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/><rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/><path fill="url(#zg)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/><polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/></svg>
-    </div>
+    <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="88" height="30"><defs><linearGradient id="zg" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs><rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/><path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/><polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/><path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/><rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/><path fill="url(#zg)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/><polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/></svg></div>
 
-    <div style="font-size:17px;font-weight:700;text-align:center;margin:30px 0 5px;">
-        Core Ops — <span style="color:#00c9a0;">End State 2027</span> &nbsp;·&nbsp; Hub &amp; Spoke at 50M ARR
-    </div>
+    <div style="font-size:16px;font-weight:700;text-align:center;margin:28px 0 4px;">Core Ops — <span style="color:#00c9a0;">End State 2027</span> &nbsp;·&nbsp; Hub &amp; Spoke at 50M ARR</div>
 
-    <div class="legend" style="justify-content:center;">
+    <div class="legend">
         <div class="leg"><div class="ls" style="border:1.5px solid #d8d0cc;background:white;"></div>Core team</div>
-        <div class="leg"><div class="ls" style="border:1.5px dashed var(--hire);background:#fff4f5;"></div>Hire needed</div>
+        <div class="leg"><div class="ls" style="border:1.5px dashed var(--h1);background:#fff4f5;"></div>Phase 1 hire</div>
+        <div class="leg"><div class="ls" style="border:1.5px dashed var(--h2);background:#fff8f3;"></div>Phase 2 hire</div>
+        <div class="leg"><div class="ls" style="border:1.5px dashed var(--h3);background:#f0f7ff;"></div>Phase 3 hire</div>
+        <div class="leg"><div class="ls" style="border:1.5px dashed var(--h4);background:#f9f4ff;"></div>Phase 4 hire</div>
         <div class="leg"><div class="ls" style="border:1.5px dashed var(--dot);background:#f5f2ff;"></div>Dotted line</div>
+        <div class="leg"><div class="ls" style="border:1.5px dashed var(--float);background:#f0fff9;"></div>Floating</div>
         <div class="leg"><div class="ls" style="border:1.5px solid #bbb;background:#f5f5f5;"></div>External</div>
-        <div class="leg"><div class="ls" style="border:1.5px dashed #00a882;background:#f0fff9;"></div>Floating (rotational)</div>
     </div>
 
-    <!-- ── HUB ── -->
+    <!-- HUB -->
     <div style="display:flex;flex-direction:column;align-items:center;width:100%;">
         <div class="hub-chip">Core Ops Hub</div>
+        <div class="n head" style="min-width:170px;"><div class="r">Head of Operations</div><div class="s">Director / VP</div></div>
+        <div class="vl" style="height:8px;"></div>
 
-        <!-- Head of Ops -->
-        <div class="n head" style="min-width:175px;">
-            <div class="r">Head of Operations</div>
-            <div class="s">Director / VP</div>
-        </div>
-        <div class="vl" style="height:9px;"></div>
-
-        <!-- Ops Programme Manager + floating Associates -->
+        <!-- Head row: Ops PM + Associates -->
         <div style="display:flex;gap:10px;align-items:center;justify-content:center;">
-            <div class="n" style="min-width:185px;">
-                <div class="r">Ops Programme Manager</div>
-                <div class="s">Senior Manager · governance &amp; rotational programme</div>
-            </div>
-            <div style="display:flex;gap:6px;">
-                <div class="n" style="min-width:100px;border-style:dashed;border-color:#00a882;background:#f0fff9;">
-                    <div class="r" style="color:#00a882;">Ops Associate</div>
-                    <div class="s">Floats · Hub &amp; Spokes</div>
-                </div>
-                <div class="n" style="min-width:100px;border-style:dashed;border-color:#00a882;background:#f0fff9;">
-                    <div class="r" style="color:#00a882;">Ops Associate</div>
-                    <div class="s">Floats · Hub &amp; Spokes</div>
-                </div>
-            </div>
+            <div class="n" style="min-width:178px;"><div class="r">Ops Programme Manager</div><div class="s">Senior Manager · governance &amp; rotational programme</div></div>
+            <div class="n float" style="min-width:95px;"><div class="r">Ops Associate</div><div class="s">Floats · Hub &amp; Spokes</div></div>
+            <div class="n float" style="min-width:95px;"><div class="r">Ops Associate</div><div class="s">Floats · Hub &amp; Spokes</div></div>
         </div>
-        <div class="vl" style="height:9px;"></div>
+        <div class="vl" style="height:8px;"></div>
 
         <!-- H-bar to 4 pods -->
-        <div style="width:94%;position:relative;height:9px;">
-            <div class="hl" style="width:100%;position:absolute;top:0;"></div>
-            <div class="vl" style="height:9px;position:absolute;top:0;left:10%;"></div>
-            <div class="vl" style="height:9px;position:absolute;top:0;left:35%;"></div>
-            <div class="vl" style="height:9px;position:absolute;top:0;left:62%;"></div>
-            <div class="vl" style="height:9px;position:absolute;top:0;left:88%;"></div>
+        <div style="width:96%;position:relative;height:8px;">
+            <div class="hl" style="position:absolute;top:0;width:100%;"></div>
+            <div class="vl" style="height:8px;position:absolute;top:0;left:10%;"></div>
+            <div class="vl" style="height:8px;position:absolute;top:0;left:34%;"></div>
+            <div class="vl" style="height:8px;position:absolute;top:0;left:62%;"></div>
+            <div class="vl" style="height:8px;position:absolute;top:0;left:88%;"></div>
         </div>
 
-        <!-- 4 pods row -->
-        <div style="display:flex;gap:8px;width:94%;align-items:flex-start;">
+        <!-- 4 pods -->
+        <div style="display:flex;gap:7px;width:96%;align-items:flex-start;">
 
             <!-- AI & Automation -->
             <div class="pod" style="flex:1.1;">
                 <div class="pod-lbl">AI &amp; Automation</div>
-                <div class="n" style="width:100%;">
-                    <div class="r">Automation Lead</div>
-                    <div class="s">Senior / Staff</div>
-                </div>
-                <div class="vl" style="height:6px;"></div>
-                <div class="n hire" style="width:100%;">
-                    <div class="r">Automation Analyst</div>
-                    <div class="s">Analyst</div>
-                    <span class="bdg hire">HIRE</span>
-                </div>
+                <div class="n" style="width:100%;"><div class="r">Automation Lead</div><div class="s">Senior / Staff</div></div>
+                <div class="vl" style="height:5px;"></div>
+                <div class="n h2" style="width:100%;"><div class="r">Automation Analyst</div><div class="s">Analyst</div><span class="bdg h2">PHASE 2</span></div>
             </div>
 
             <!-- Data & Analytics -->
             <div class="pod" style="flex:1.3;">
                 <div class="pod-lbl">Data &amp; Analytics</div>
-                <div class="n hire" style="width:100%;">
-                    <div class="r">Analytics Lead</div>
-                    <div class="s">Senior Analyst</div>
-                    <span class="bdg hire">HIRE</span>
-                </div>
-                <div class="vl" style="height:6px;"></div>
+                <div class="n h1" style="width:100%;"><div class="r">Analytics Lead</div><div class="s">Senior Analyst</div><span class="bdg h1">PHASE 1</span></div>
+                <div class="vl" style="height:5px;"></div>
                 <div style="display:flex;gap:5px;width:100%;">
-                    <div class="n" style="flex:1;">
-                        <div class="r">Data Analyst</div>
-                        <div class="s">Rotational feed</div>
-                    </div>
-                    <div class="n hire" style="flex:1;">
-                        <div class="r">Data Analyst II</div>
-                        <div class="s">Analyst</div>
-                        <span class="bdg hire">HIRE</span>
-                    </div>
+                    <div class="n" style="flex:1;"><div class="r">Data Analyst</div><div class="s">Rotational feed</div></div>
+                    <div class="n h3" style="flex:1;"><div class="r">Data Analyst II</div><div class="s">Analyst</div><span class="bdg h3">PHASE 3</span></div>
                 </div>
             </div>
 
             <!-- Systems & CRM -->
             <div class="pod" style="flex:1.2;">
                 <div class="pod-lbl">Systems &amp; CRM</div>
-                <div class="n hire" style="width:100%;">
-                    <div class="r">Systems &amp; CRM Specialist</div>
-                    <div class="s">Mid-level</div>
-                    <span class="bdg hire">HIRE</span>
-                </div>
-                <div class="vl" style="height:6px;background:var(--dot);"></div>
-                <div class="n dotted" style="width:100%;">
-                    <div class="r">Tech Engineer</div>
-                    <div class="s">Sits in Tech · systems &amp; data integrations</div>
-                    <span class="bdg dot">DOTTED</span>
-                </div>
+                <div class="n h1" style="width:100%;"><div class="r">Systems &amp; CRM Specialist</div><div class="s">Mid-level</div><span class="bdg h1">PHASE 1</span></div>
+                <div class="vl" style="height:5px;background:var(--dot);"></div>
+                <div class="n dotted" style="width:100%;"><div class="r">Tech Engineer</div><div class="s">Sits in Tech · systems &amp; data integrations</div><span class="bdg dot">DOTTED</span></div>
             </div>
 
             <!-- Finance Ops -->
-            <div class="pod" style="flex:1.1;">
+            <div class="pod" style="flex:1.3;">
                 <div class="pod-lbl">Finance Ops</div>
-                <div class="n" style="width:100%;">
-                    <div class="r">Finance &amp; Ops Analyst</div>
-                    <div class="s">Junior · finance liaison</div>
+                <div class="n h2" style="width:100%;"><div class="r">Finance Ops Manager</div><div class="s">Mid-Senior · Finance interface</div><span class="bdg h2">PHASE 2</span></div>
+                <div class="vl" style="height:5px;"></div>
+                <div style="display:flex;gap:5px;width:100%;">
+                    <div class="n" style="flex:1;"><div class="r">Finance &amp; Ops Analyst</div><div class="s">Junior</div></div>
+                    <div class="n" style="flex:1;"><div class="r">People &amp; Legal Support</div><div class="s">Junior</div></div>
                 </div>
-                <div class="vl" style="height:6px;"></div>
-                <div class="n" style="width:100%;">
-                    <div class="r">People &amp; Legal Support</div>
-                    <div class="s">Junior</div>
-                </div>
-                <div class="vl" style="height:6px;background:var(--dot);"></div>
-                <div class="n dotted" style="width:100%;">
-                    <div class="r">Security Lead</div>
-                    <div class="s">Sits in Legal</div>
-                    <span class="bdg dot">DOTTED</span>
-                </div>
-                <div class="vl" style="height:6px;background:var(--ext);"></div>
-                <div class="n ext" style="width:100%;">
-                    <div class="r">Finance Director</div>
-                    <div class="s">Senior Finance Manager below</div>
-                    <span class="bdg ext">EXTERNAL</span>
+                <div class="vl" style="height:5px;background:var(--dot);"></div>
+                <div style="display:flex;gap:5px;width:100%;">
+                    <div class="n dotted" style="flex:1;"><div class="r">Security Lead</div><div class="s">Sits in Legal</div><span class="bdg dot">DOTTED</span></div>
+                    <div class="n ext" style="flex:1;"><div class="r">Finance Director</div><div class="s">+ Sr. Finance Manager</div><span class="bdg ext">EXTERNAL</span></div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- ── SPOKES ── -->
-    <div style="display:flex;gap:16px;width:100%;margin-top:10px;align-items:flex-start;">
-
-        <!-- divider label -->
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:4px;min-width:36px;">
-            <div style="font-size:7.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);writing-mode:vertical-rl;transform:rotate(180deg);">Spokes</div>
+    <!-- SPOKES -->
+    <div style="display:flex;gap:14px;width:100%;margin-top:9px;align-items:flex-start;">
+        <div style="display:flex;align-items:center;padding-top:4px;min-width:30px;">
+            <div style="font-size:7px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);writing-mode:vertical-rl;transform:rotate(180deg);">Spokes</div>
         </div>
 
         <!-- Growth Ops Spoke -->
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
             <div class="spoke-chip">Growth Ops</div>
-            <div class="n spoke-head">
-                <div class="r">Growth Ops Lead</div>
-                <div class="s">Senior · Revenue + Marketing</div>
+            <div class="n spoke-head"><div class="r">Growth Ops Lead</div><div class="s">Senior · Revenue + Marketing</div></div>
+            <div class="vl" style="height:5px;"></div>
+            <div style="display:flex;gap:5px;width:100%;">
+                <div class="n h2" style="flex:1;"><div class="r">Revenue Analyst I</div><div class="s">Pipeline ops · SDR/AE support</div><span class="bdg h2">PHASE 2</span></div>
+                <div class="n h3" style="flex:1;"><div class="r">Revenue Analyst II</div><div class="s">CRM hygiene · forecasting</div><span class="bdg h3">PHASE 3</span></div>
+                <div class="n h2" style="flex:1;"><div class="r">Marketing Analyst I</div><div class="s">Paid · attribution · Dreamdata</div><span class="bdg h2">PHASE 2</span></div>
+                <div class="n h3" style="flex:1;"><div class="r">Marketing Analyst II</div><div class="s">Events · organic · list ops</div><span class="bdg h3">PHASE 3</span></div>
             </div>
-            <div class="vl" style="height:6px;"></div>
-            <div style="display:flex;gap:6px;width:100%;">
-                <div class="n hire" style="flex:1;">
-                    <div class="r">Revenue Analyst</div>
-                    <div class="s">Embedded · Sales/SDR</div>
-                    <span class="bdg hire">HIRE</span>
-                </div>
-                <div class="n hire" style="flex:1;">
-                    <div class="r">Marketing Analyst</div>
-                    <div class="s">Embedded · Demand gen</div>
-                    <span class="bdg hire">HIRE</span>
-                </div>
-            </div>
-            <div class="vl" style="height:6px;background:var(--dot);"></div>
-            <div class="n dotted" style="width:100%;">
-                <div class="r">GTM Engineer</div>
-                <div class="s">Clay &amp; outbound · Reports to CRO · Fortnightly sync</div>
-                <span class="bdg dot">DOTTED</span>
-            </div>
+            <div class="vl" style="height:5px;background:var(--dot);"></div>
+            <div class="n dotted" style="width:100%;"><div class="r">GTM Engineer</div><div class="s">Clay &amp; outbound · Reports to CRO · Fortnightly sync + roadmap review</div><span class="bdg dot">DOTTED</span></div>
         </div>
 
         <!-- Customer Ops Spoke -->
         <div style="flex:1;display:flex;flex-direction:column;align-items:center;">
             <div class="spoke-chip">Customer Ops</div>
-            <div class="n spoke-head">
-                <div class="r">Customer Ops Strategist</div>
-                <div class="s">Senior · AM programme design</div>
+            <div class="n spoke-head"><div class="r">Customer Ops Strategist</div><div class="s">Senior · AM programme design</div></div>
+            <div class="vl" style="height:5px;"></div>
+            <div style="display:flex;gap:5px;width:100%;">
+                <div class="n h2" style="flex:1;"><div class="r">Customer Ops Owner</div><div class="s">Mid · Daily AM execution</div><span class="bdg h2">PHASE 2</span></div>
+                <div class="n h3" style="flex:1;"><div class="r">CS Ops</div><div class="s">Mid · Customer side</div><span class="bdg h3">PHASE 3</span></div>
             </div>
-            <div class="vl" style="height:6px;"></div>
-            <div style="display:flex;gap:6px;width:100%;">
-                <div class="n hire" style="flex:1;">
-                    <div class="r">Customer Ops Owner</div>
-                    <div class="s">Mid · Daily AM execution</div>
-                    <span class="bdg hire">HIRE</span>
-                </div>
-                <div class="n hire" style="flex:1;">
-                    <div class="r">CS Ops</div>
-                    <div class="s">Mid · Customer side</div>
-                    <span class="bdg hire">HIRE</span>
-                </div>
+            <div class="vl" style="height:5px;background:var(--dot);"></div>
+            <div class="n dotted" style="width:100%;"><div class="r">Zendesk Specialist</div><div class="s">Zendesk admin &amp; workflow · Sits in CS</div><span class="bdg dot">DOTTED</span></div>
+        </div>
+    </div>
+
+    <div class="pg">1 / 3</div>
+    <div class="dots"><div class="dot on" data-i="0"></div><div class="dot" data-i="1"></div><div class="dot" data-i="2"></div></div>
+</div>
+
+<!-- ══════════════════════════════════
+     SLIDE 2 — HIRING SEQUENCE
+══════════════════════════════════ -->
+<div class="slide">
+    <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="88" height="30"><defs><linearGradient id="zg2" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs><rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/><path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/><polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/><path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/><rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/><path fill="url(#zg2)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/><polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/></svg></div>
+
+    <div style="margin-top:40px;margin-bottom:14px;">
+        <div style="font-size:30px;font-weight:700;margin-bottom:3px;">Hiring <span style="color:#00c9a0;">Sequence</span></div>
+        <div style="font-size:13px;color:var(--gray);">4 phases from current state to 50M ARR end state</div>
+    </div>
+
+    <div class="phase-grid">
+
+        <!-- PHASE 1 -->
+        <div class="phase-col">
+            <div class="phase-hdr" style="background:var(--h1);">Phase 1 — Now<br><span style="font-size:9px;font-weight:500;opacity:0.9;">~31M ARR · Immediate</span></div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h1);">
+                <div class="role" style="color:var(--h1);">Analytics Lead</div>
+                <div class="why">Everything data-related is blocked without this. Spokes have no analytical support and Zhen can't carry it alone.</div>
+                <div class="loc" style="color:var(--h1);">→ Data &amp; Analytics Pod</div>
             </div>
-            <div class="vl" style="height:6px;background:var(--dot);"></div>
-            <div class="n dotted" style="width:100%;">
-                <div class="r">Zendesk Specialist</div>
-                <div class="s">Zendesk admin &amp; workflow · Sits in CS</div>
-                <span class="bdg dot">DOTTED</span>
+
+            <div class="hire-card" style="border-left:3px solid var(--h1);">
+                <div class="role" style="color:var(--h1);">Systems &amp; CRM Specialist</div>
+                <div class="why">Frees Jared from HubSpot admin so he can actually manage and govern. Without this the Ops Lead role is just a CRM admin role.</div>
+                <div class="loc" style="color:var(--h1);">→ Systems &amp; CRM Pod</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h1);">
+                <div class="role" style="color:var(--h1);">Customer Ops Strategist</div>
+                <div class="why">No one owns AM programme design today. Net new expansion revenue has no operational backbone. Highest business impact of any hire.</div>
+                <div class="loc" style="color:var(--h1);">→ Customer Ops Spoke</div>
+            </div>
+        </div>
+
+        <!-- PHASE 2 -->
+        <div class="phase-col">
+            <div class="phase-hdr" style="background:var(--h2);">Phase 2 — Near Term<br><span style="font-size:9px;font-weight:500;opacity:0.9;">~33–37M ARR · H2 2026</span></div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h2);">
+                <div class="role" style="color:var(--h2);">Growth Ops Lead</div>
+                <div class="why">Revenue + Marketing need a senior person setting the ops agenda before you hire analysts under them. Lead comes first.</div>
+                <div class="loc" style="color:var(--h2);">→ Growth Ops Spoke</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h2);">
+                <div class="role" style="color:var(--h2);">Customer Ops Owner</div>
+                <div class="why">Once Strategist is in place, they need execution support immediately. Strategist will default to day-to-day without this hire.</div>
+                <div class="loc" style="color:var(--h2);">→ Customer Ops Spoke</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h2);">
+                <div class="role" style="color:var(--h2);">Finance Ops Manager</div>
+                <div class="why">Junior Finance &amp; Ops Analyst can't operate at peer level with Senior Finance Manager. Need a mid-senior bridge before finance complexity scales.</div>
+                <div class="loc" style="color:var(--h2);">→ Finance Ops Pod</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h2);">
+                <div class="role" style="color:var(--h2);">Revenue Analyst I</div>
+                <div class="why">Pipeline ops and SDR/AE daily support needs dedicated resource once Growth Ops Lead is in place.</div>
+                <div class="loc" style="color:var(--h2);">→ Growth Ops Spoke</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h2);">
+                <div class="role" style="color:var(--h2);">Marketing Analyst I</div>
+                <div class="why">13-person marketing team doing paid + events + organic needs ops support. Paid &amp; attribution first — highest measurable ROI.</div>
+                <div class="loc" style="color:var(--h2);">→ Growth Ops Spoke</div>
+            </div>
+        </div>
+
+        <!-- PHASE 3 -->
+        <div class="phase-col">
+            <div class="phase-hdr" style="background:var(--h3);">Phase 3 — Scale<br><span style="font-size:9px;font-weight:500;opacity:0.9;">~38–45M ARR · H1 2027</span></div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h3);">
+                <div class="role" style="color:var(--h3);">Automation Analyst</div>
+                <div class="why">AI Lead gets pulled in every direction. Analyst handles execution, maintenance, and monitoring so Lead stays on architecture and new builds.</div>
+                <div class="loc" style="color:var(--h3);">→ AI &amp; Automation Pod</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h3);">
+                <div class="role" style="color:var(--h3);">Revenue Analyst II</div>
+                <div class="why">CRM data hygiene becomes its own workload at this scale. Split from pipeline ops — one person can't own both at 15+ AEs and 15+ SDRs.</div>
+                <div class="loc" style="color:var(--h3);">→ Growth Ops Spoke</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h3);">
+                <div class="role" style="color:var(--h3);">Marketing Analyst II</div>
+                <div class="why">Events + organic is a separate ops motion to paid. One analyst covering all three channels is too thin at this marketing team size.</div>
+                <div class="loc" style="color:var(--h3);">→ Growth Ops Spoke</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h3);">
+                <div class="role" style="color:var(--h3);">CS Ops</div>
+                <div class="why">Customer base is large enough that support ops needs dedicated ownership. Zendesk dotted line isn't sufficient without a Core Ops owner alongside them.</div>
+                <div class="loc" style="color:var(--h3);">→ Customer Ops Spoke</div>
+            </div>
+        </div>
+
+        <!-- PHASE 4 -->
+        <div class="phase-col">
+            <div class="phase-hdr" style="background:var(--h4);">Phase 4 — Final Push<br><span style="font-size:9px;font-weight:500;opacity:0.9;">~45–50M ARR · H2 2027</span></div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h4);">
+                <div class="role" style="color:var(--h4);">Data Analyst II</div>
+                <div class="why">Analytics demand from two Spokes plus internal Hub work outgrows one analyst. Needed as reporting complexity grows toward 50M.</div>
+                <div class="loc" style="color:var(--h4);">→ Data &amp; Analytics Pod</div>
+            </div>
+
+            <div class="hire-card" style="border-left:3px solid var(--h4);">
+                <div class="role" style="color:var(--h4);">RevOps / Biz Systems Architect</div>
+                <div class="why">HubSpot + warehouse + product data integration complexity needs a senior architect. Future role — not needed until systems are deeply interconnected.</div>
+                <div class="loc" style="color:var(--h4);">→ Hub (Systems pod or standalone)</div>
+            </div>
+
+            <div style="background:white;border-radius:8px;padding:10px;border:1px solid #e0d0ca;margin-top:4px;">
+                <div style="font-size:9px;font-weight:700;color:var(--gray);margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;">Watch items</div>
+                <div style="font-size:9px;color:var(--gray);line-height:1.5;">
+                    · Customer Ops Analyst if Strategist gets pulled into execution<br>
+                    · Second CS Ops if customer base grows significantly<br>
+                    · Marketing Analyst III if ABM programme launches
+                </div>
             </div>
         </div>
 
     </div>
 
-    <div class="pg">1 / 2</div>
-    <div class="dots">
-        <div class="dot on" data-i="0"></div>
-        <div class="dot" data-i="1"></div>
-    </div>
+    <div class="pg">2 / 3</div>
+    <div class="dots"><div class="dot" data-i="0"></div><div class="dot on" data-i="1"></div><div class="dot" data-i="2"></div></div>
 </div>
 
 <!-- ══════════════════════════════════
-     SLIDE 2 — SUMMARY
+     SLIDE 3 — SUMMARY
 ══════════════════════════════════ -->
 <div class="slide">
-    <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="90" height="30"><defs><linearGradient id="zg2" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs><rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/><path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/><polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/><path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/><rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/><path fill="url(#zg2)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/><polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/></svg>
-    </div>
+    <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="88" height="30"><defs><linearGradient id="zg3" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs><rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/><path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/><polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/><path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/><rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/><path fill="url(#zg3)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/><polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/></svg></div>
 
-    <div style="margin-top:44px;">
-        <div style="font-size:34px;font-weight:700;margin-bottom:4px;">Core Ops at <span style="color:#00c9a0;">50M ARR</span></div>
-        <div style="font-size:14px;color:var(--gray);margin-bottom:20px;">Hub &amp; Spoke Model — End State 2027</div>
+    <div style="margin-top:42px;margin-bottom:18px;">
+        <div style="font-size:32px;font-weight:700;margin-bottom:4px;">Core Ops at <span style="color:#00c9a0;">50M ARR</span></div>
+        <div style="font-size:13px;color:var(--gray);">Hub &amp; Spoke Model — End State 2027</div>
     </div>
 
     <div class="sg">
         <div class="sc">
             <div class="cn">1</div>
-            <h3>Hub — 4 Pods</h3>
-            <p>AI &amp; Automation · Data &amp; Analytics (Lead + 2 Analysts) · Systems &amp; CRM · Finance Ops. All builds and data work stay here — Spokes consume, don't build.</p>
-            <div><span class="tag">Warehouse</span><span class="tag">AI</span><span class="tag">HubSpot</span><span class="tag">Finance liaison</span></div>
+            <h3>Hub — 4 Pods + 2 Floating Associates</h3>
+            <p>AI &amp; Automation · Data &amp; Analytics (Lead + 2 Analysts) · Systems &amp; CRM · Finance Ops (Manager + 2 Juniors). All builds and data stay here. Spokes consume, don't build.</p>
+            <div><span class="tag">Warehouse</span><span class="tag">AI</span><span class="tag">HubSpot</span><span class="tag">Finance liaison</span><span class="tag">Rotational programme</span></div>
         </div>
         <div class="sc">
             <div class="cn">2</div>
             <h3>Two Spokes — GTM Aligned</h3>
-            <p><strong>Growth Ops</strong> serves Revenue + Marketing together — one Lead sets the agenda against pipeline goals, not open requests. <strong>Customer Ops</strong> owns AM strategy and CS ops.</p>
+            <p><strong>Growth Ops</strong> (Lead + 2 Revenue + 2 Marketing Analysts) covers all top-of-funnel — one lead sets agenda against pipeline goals. <strong>Customer Ops</strong> owns AM strategy, AM execution, and CS ops.</p>
             <div><span class="tag">Growth Ops</span><span class="tag">Customer Ops</span></div>
         </div>
         <div class="sc">
             <div class="cn">3</div>
-            <h3>9 Key Hires</h3>
-            <p>Analytics Lead · Data Analyst II · Automation Analyst · Systems &amp; CRM Specialist · Customer Ops Owner · CS Ops · Revenue Analyst · Marketing Analyst</p>
-            <div><span class="tag" style="background:#fff4f5;color:var(--hire);">Priority: Analytics Lead + Customer</span></div>
+            <h3>11 Hires across 4 Phases</h3>
+            <p><strong>P1 (now):</strong> Analytics Lead · CRM Specialist · Customer Ops Strategist<br><strong>P2 (H2 2026):</strong> Growth Ops Lead · Customer Ops Owner · Finance Ops Manager · Rev Analyst I · Mktg Analyst I<br><strong>P3 (H1 2027):</strong> Automation Analyst · Rev Analyst II · Mktg Analyst II · CS Ops<br><strong>P4 (H2 2027):</strong> Data Analyst II · RevOps Architect</p>
         </div>
         <div class="sc">
             <div class="cn">4</div>
-            <h3>Dotted Line Governance</h3>
-            <p>GTM Engineer (CRO) · Zendesk Specialist (CS) · Tech Engineer (Tech team, covers Systems &amp; Data) · Security Lead (Legal). All operate to Core Ops standards via fortnightly syncs.</p>
+            <h3>4 Dotted Line Relationships</h3>
+            <p>GTM Engineer (CRO) · Zendesk Specialist (CS) · Tech Engineer (Tech team) · Security Lead (Legal). All operate to Core Ops standards via fortnightly syncs and roadmap reviews.</p>
             <div>
                 <span class="tag" style="background:#f5f2ff;color:var(--dot);">GTM Engineer</span>
                 <span class="tag" style="background:#f5f2ff;color:var(--dot);">Zendesk</span>
@@ -389,14 +404,11 @@
     </div>
 
     <div class="bn">
-        <strong>~16 people in Core Ops</strong> · Finance Director + Senior Finance Manager sit externally in Finance Dept · Rotational programme feeds Data &amp; Analytics pod · Supporting <strong>250+ headcount at 50M ARR</strong>
+        <strong>~18 people in Core Ops at full build-out</strong> · Finance Director + Senior Finance Manager external · Rotational programme feeds Analytics pod · Supporting <strong>250+ headcount at 50M ARR</strong>
     </div>
 
-    <div class="pg">2 / 2</div>
-    <div class="dots">
-        <div class="dot" data-i="0"></div>
-        <div class="dot on" data-i="1"></div>
-    </div>
+    <div class="pg">3 / 3</div>
+    <div class="dots"><div class="dot" data-i="0"></div><div class="dot" data-i="1"></div><div class="dot on" data-i="2"></div></div>
 </div>
 
 </div>
