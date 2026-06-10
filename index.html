@@ -12,9 +12,8 @@
             --zinc-dark: #000000;
             --zinc-gray: #6C6C6C;
             --zinc-peach: #F7E2DA;
-            --zinc-peach-light: #FFEBDE;
-            --hire-color: #FF6B6B;
-            --dotted-color: #9B59B6;
+            --hire-color: #E8455A;
+            --dotted-color: #7B5EA7;
         }
 
         body {
@@ -27,614 +26,384 @@
         .presentation { width: 100vw; height: 100vh; position: relative; }
 
         .slide {
-            position: absolute;
-            top: 0; left: 0;
+            position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
-            padding: 50px 60px 40px;
-            display: none;
-            flex-direction: column;
+            padding: 44px 52px 36px;
+            display: none; flex-direction: column;
             background: var(--zinc-peach);
         }
         .slide.active { display: flex; }
 
-        .logo { position: absolute; top: 20px; left: 36px; }
+        .logo { position: absolute; top: 18px; left: 32px; }
+        .slide-number { position: absolute; bottom: 20px; right: 32px; font-size: 12px; color: var(--zinc-gray); }
+        .nav-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
+        .nav-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; cursor: pointer; transition: background 0.3s; }
+        .nav-dot.active { background: var(--zinc-dark); }
 
-        .slide-number {
-            position: absolute;
-            bottom: 24px; right: 36px;
-            font-size: 13px;
-            color: var(--zinc-gray);
-        }
-
-        .nav-dots {
-            position: absolute;
-            bottom: 24px; left: 50%;
-            transform: translateX(-50%);
-            display: flex; gap: 8px;
-        }
-        .nav-dot {
-            width: 9px; height: 9px;
-            border-radius: 50%;
-            background: #ccc;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .nav-dot.active { background: var(--zinc-teal); }
-
-        /* ── ORG CHART SLIDE ── */
-        .slide-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 36px 0 18px;
-            text-align: center;
-            letter-spacing: -0.3px;
-        }
-        .slide-title span { color: #00c9a0; }
-
-        .org-wrap {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-            overflow: hidden;
-        }
-
-        /* HUB */
-        .hub-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hub-label {
-            background: var(--zinc-dark);
-            color: var(--zinc-teal);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 3px 14px;
-            border-radius: 20px;
-            margin-bottom: 6px;
-        }
-
-        .hub-box {
-            background: white;
-            border: 2.5px solid var(--zinc-dark);
-            border-radius: 10px;
-            padding: 8px 16px;
-            text-align: center;
-            min-width: 160px;
-        }
-        .hub-box .role { font-size: 12px; font-weight: 700; color: var(--zinc-dark); }
-        .hub-box .level { font-size: 10px; color: var(--zinc-gray); margin-top: 2px; }
-
-        .hub-row {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 6px;
-            position: relative;
-        }
-
-        .hub-children {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 6px;
-        }
-
-        /* connector lines */
-        .v-line {
-            width: 2px;
-            height: 12px;
-            background: #bbb;
-            margin: 0 auto;
-        }
-        .h-connector {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* NODE */
+        /* ── SHARED NODE STYLES ── */
         .node {
             background: white;
             border: 1.5px solid #ddd;
-            border-radius: 8px;
-            padding: 6px 10px;
+            border-radius: 7px;
+            padding: 5px 9px;
             text-align: center;
-            min-width: 120px;
-            max-width: 140px;
         }
-        .node .role { font-size: 10.5px; font-weight: 600; color: var(--zinc-dark); line-height: 1.3; }
-        .node .level { font-size: 9px; color: var(--zinc-gray); margin-top: 2px; }
+        .node .r { font-size: 10px; font-weight: 600; color: var(--zinc-dark); line-height: 1.3; }
+        .node .l { font-size: 8.5px; color: var(--zinc-gray); margin-top: 1px; }
 
-        .node.hire {
-            border: 1.5px dashed var(--hire-color);
-            background: #fff5f5;
-        }
-        .node.hire .role { color: var(--hire-color); }
-        .hire-badge {
-            display: inline-block;
-            background: var(--hire-color);
-            color: white;
-            font-size: 8px;
-            font-weight: 700;
-            padding: 1px 5px;
-            border-radius: 8px;
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
+        .node.hire { border: 1.5px dashed var(--hire-color); background: #fff5f6; }
+        .node.hire .r { color: var(--hire-color); }
 
-        .node.dotted-node {
-            border: 1.5px dashed var(--dotted-color);
-            background: #f8f4ff;
-        }
-        .node.dotted-node .role { color: var(--dotted-color); }
-        .dotted-badge {
-            display: inline-block;
-            background: var(--dotted-color);
-            color: white;
-            font-size: 8px;
-            font-weight: 700;
-            padding: 1px 5px;
-            border-radius: 8px;
-            margin-top: 2px;
-            letter-spacing: 0.5px;
-        }
+        .node.dotted-node { border: 1.5px dashed var(--dotted-color); background: #f5f2ff; }
+        .node.dotted-node .r { color: var(--dotted-color); }
 
-        /* SPOKES */
-        .spokes-section {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 4px;
-        }
+        .node.hub-head { border: 2.5px solid var(--zinc-dark); border-radius: 9px; padding: 7px 18px; min-width: 170px; }
+        .node.hub-head .r { font-size: 12px; font-weight: 700; }
 
-        .spokes-connector {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            width: 80%;
-            position: relative;
-            height: 20px;
-        }
-        .spokes-h-line {
-            position: absolute;
-            top: 0;
-            left: 0; right: 0;
-            height: 2px;
-            background: #bbb;
-        }
-        .spoke-drop {
-            position: absolute;
-            top: 0;
-            width: 2px;
-            height: 20px;
-            background: #bbb;
-        }
-        .spoke-drop.left { left: 16.5%; }
-        .spoke-drop.center { left: 50%; transform: translateX(-50%); }
-        .spoke-drop.right { right: 16.5%; }
+        .node.spoke-head { border: 2px solid var(--zinc-dark); border-radius: 8px; padding: 6px 12px; width: 100%; }
+        .node.spoke-head .r { font-size: 11px; font-weight: 700; }
 
-        .spokes-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 16px;
-            width: 100%;
-            margin-top: 0;
+        .badge {
+            display: inline-block; font-size: 7.5px; font-weight: 700;
+            padding: 1px 5px; border-radius: 6px; margin-top: 2px; letter-spacing: 0.4px;
         }
+        .badge.hire { background: var(--hire-color); color: white; }
+        .badge.dotted { background: var(--dotted-color); color: white; }
+        .badge.external { background: #555; color: white; }
 
-        .spoke-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-        }
+        /* connectors */
+        .vl { width: 2px; background: #bbb; margin: 0 auto; }
+        .hl { height: 2px; background: #bbb; }
 
-        .spoke-label {
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--zinc-teal);
-            background: var(--zinc-dark);
-            padding: 2px 10px;
+        /* pod wrapper */
+        .pod {
+            border: 1.5px solid #d0c8c4;
             border-radius: 10px;
-            margin-bottom: 4px;
+            padding: 8px 10px 8px;
+            background: rgba(255,255,255,0.45);
+            display: flex; flex-direction: column; align-items: center; gap: 0;
+        }
+        .pod-label {
+            font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--zinc-gray); margin-bottom: 5px;
         }
 
-        .spoke-node {
-            background: white;
-            border: 2px solid var(--zinc-dark);
-            border-radius: 8px;
-            padding: 6px 10px;
-            text-align: center;
-            width: 100%;
+        /* hub label chip */
+        .hub-chip {
+            background: var(--zinc-dark); color: var(--zinc-teal);
+            font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            padding: 3px 14px; border-radius: 20px; margin-bottom: 5px; align-self: center;
         }
-        .spoke-node .role { font-size: 10.5px; font-weight: 700; }
-        .spoke-node .level { font-size: 9px; color: var(--zinc-gray); margin-top: 1px; }
-
-        .spoke-children {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            gap: 0;
+        .spoke-chip {
+            font-size: 8px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--zinc-teal); background: var(--zinc-dark);
+            padding: 2px 10px; border-radius: 10px; margin-bottom: 4px;
         }
-
-        .spoke-child {
-            width: 90%;
-        }
-
-        /* ── SUMMARY SLIDE ── */
-        .summary-slide h1 {
-            font-size: 38px;
-            font-weight: 700;
-            margin-top: 50px;
-            margin-bottom: 6px;
-        }
-        .summary-slide h1 span { color: #00c9a0; }
-        .summary-slide .subtitle {
-            font-size: 16px;
-            color: var(--zinc-gray);
-            margin-bottom: 28px;
-        }
-
-        .summary-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            flex: 1;
-        }
-
-        .summary-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .summary-card .card-num {
-            width: 28px; height: 28px;
-            background: var(--zinc-dark);
-            color: var(--zinc-teal);
-            border-radius: 50%;
-            font-size: 13px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .summary-card h3 {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--zinc-dark);
-        }
-
-        .summary-card p {
-            font-size: 13px;
-            color: var(--zinc-gray);
-            line-height: 1.5;
-        }
-
-        .summary-card .tag {
-            display: inline-block;
-            background: var(--zinc-peach-light, #FFEBDE);
-            color: var(--zinc-dark);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 8px;
-            margin-right: 4px;
-            margin-top: 2px;
-        }
-
-        .bottom-note {
-            text-align: center;
-            font-size: 13px;
-            color: var(--zinc-gray);
-            padding: 12px 0 0;
-            border-top: 1px solid #e0d0ca;
-        }
-        .bottom-note strong { color: var(--zinc-dark); }
 
         /* legend */
-        .legend {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 8px;
+        .legend { display: flex; gap: 14px; justify-content: center; margin-bottom: 6px; }
+        .leg { display: flex; align-items: center; gap: 4px; font-size: 9px; color: var(--zinc-gray); }
+        .leg-sw { width: 13px; height: 13px; border-radius: 3px; }
+
+        /* ── SUMMARY SLIDE ── */
+        .sum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; flex: 1; }
+        .sum-card {
+            background: white; border-radius: 11px; padding: 18px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; gap: 7px;
         }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 9.5px;
-            color: var(--zinc-gray);
+        .sum-card .cn {
+            width: 26px; height: 26px; background: var(--zinc-dark); color: var(--zinc-teal);
+            border-radius: 50%; font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
         }
-        .legend-swatch {
-            width: 14px; height: 14px;
-            border-radius: 3px;
+        .sum-card h3 { font-size: 14px; font-weight: 700; }
+        .sum-card p { font-size: 12px; color: var(--zinc-gray); line-height: 1.55; }
+        .tag {
+            display: inline-block; font-size: 10px; font-weight: 600;
+            padding: 2px 7px; border-radius: 7px; margin: 2px 2px 0 0;
+            background: #f0ebe7; color: var(--zinc-dark);
         }
-        .legend-swatch.hire { border: 1.5px dashed var(--hire-color); background: #fff5f5; }
-        .legend-swatch.dotted { border: 1.5px dashed var(--dotted-color); background: #f8f4ff; }
-        .legend-swatch.solid { border: 1.5px solid #ddd; background: white; }
+        .bottom-note {
+            text-align: center; font-size: 12px; color: var(--zinc-gray);
+            padding: 10px 0 0; border-top: 1px solid #e0d0ca; margin-top: 4px;
+        }
+        .bottom-note strong { color: var(--zinc-dark); }
     </style>
 </head>
 <body>
 <div class="presentation">
 
-    <!-- ══════════════════════════════════════════
-         SLIDE 1: ORG CHART
-    ══════════════════════════════════════════ -->
-    <div class="slide active">
-        <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="100" height="34">
-                <defs><linearGradient id="zg" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs>
-                <rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/>
-                <path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/>
-                <polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/>
-                <path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/>
-                <rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/>
-                <path fill="url(#zg)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/>
-                <polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/>
-            </svg>
-        </div>
+<!-- ════════════════════════════════════
+     SLIDE 1 — ORG CHART
+════════════════════════════════════ -->
+<div class="slide active">
+    <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="95" height="32"><defs><linearGradient id="zg" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs><rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/><path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/><polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/><path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/><rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/><path fill="url(#zg)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/><polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/></svg>
+    </div>
 
-        <div class="slide-title">Core Ops — <span>End State 2027</span> &nbsp;·&nbsp; Hub &amp; Spoke Model at 50M ARR</div>
+    <div style="text-align:center;font-size:19px;font-weight:700;margin:34px 0 6px;">Core Ops — <span style="color:#00c9a0;">End State 2027</span> &nbsp;·&nbsp; Hub &amp; Spoke at 50M ARR</div>
 
-        <div class="legend">
-            <div class="legend-item"><div class="legend-swatch solid"></div> Core team</div>
-            <div class="legend-item"><div class="legend-swatch hire"></div> Hire needed</div>
-            <div class="legend-item"><div class="legend-swatch dotted"></div> Dotted line (embedded in GTM)</div>
-        </div>
+    <div class="legend">
+        <div class="leg"><div class="leg-sw" style="border:1.5px solid #ddd;background:white;"></div>Core team</div>
+        <div class="leg"><div class="leg-sw" style="border:1.5px dashed var(--hire-color);background:#fff5f6;"></div>Hire needed</div>
+        <div class="leg"><div class="leg-sw" style="border:1.5px dashed var(--dotted-color);background:#f5f2ff;"></div>Dotted line</div>
+        <div class="leg"><div class="leg-sw" style="border:1.5px solid #999;background:#f5f5f5;"></div>External (outside Core Ops)</div>
+    </div>
 
-        <div class="org-wrap">
+    <!-- ── LAYOUT: Hub left 52%, Spokes right 46% ── -->
+    <div style="flex:1;display:flex;gap:16px;overflow:hidden;">
 
-            <!-- HUB -->
-            <div class="hub-container">
-                <div class="hub-label">Core Ops Hub</div>
+        <!-- HUB COLUMN -->
+        <div style="width:52%;display:flex;flex-direction:column;align-items:center;gap:0;">
+            <div class="hub-chip">Core Ops Hub</div>
 
-                <!-- Head of Ops -->
-                <div class="hub-box">
-                    <div class="role">Head of Operations</div>
-                    <div class="level">Director / VP</div>
-                </div>
-
-                <div class="v-line"></div>
-
-                <!-- Three hub pillars -->
-                <div style="display:flex; gap:10px; justify-content:center; width:100%;">
-
-                    <!-- Pillar 1: Ops Lead -->
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-                        <div class="node" style="min-width:130px;">
-                            <div class="role">Operations Lead</div>
-                            <div class="level">Senior Manager</div>
-                        </div>
-                        <div class="v-line"></div>
-                        <div style="display:flex;gap:6px;">
-                            <div style="display:flex;flex-direction:column;align-items:center;">
-                                <div class="node hire" style="min-width:118px;">
-                                    <div class="role">Systems &amp; CRM Specialist</div>
-                                    <div class="level">Mid-level</div>
-                                    <span class="hire-badge">HIRE</span>
-                                </div>
-                            </div>
-                            <div style="display:flex;flex-direction:column;align-items:center;">
-                                <div class="node" style="min-width:100px;">
-                                    <div class="role">Ops Associates</div>
-                                    <div class="level">×2 · Associate</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pillar 2: AI Lead -->
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-                        <div class="node" style="min-width:130px;">
-                            <div class="role">AI &amp; Automation Lead</div>
-                            <div class="level">Senior / Staff</div>
-                        </div>
-                        <div class="v-line"></div>
-                        <div class="node hire" style="min-width:118px;">
-                            <div class="role">Automation Analyst</div>
-                            <div class="level">Analyst</div>
-                            <span class="hire-badge">HIRE</span>
-                        </div>
-                    </div>
-
-                    <!-- Pillar 3: Data Lead -->
-                    <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-                        <div class="node" style="min-width:130px;">
-                            <div class="role">Data &amp; Analytics Lead</div>
-                            <div class="level">Sr. Analyst → Lead</div>
-                        </div>
-                    </div>
-
-                </div>
+            <!-- Head of Ops -->
+            <div class="node hub-head">
+                <div class="r">Head of Operations</div>
+                <div class="l">Director / VP</div>
             </div>
+            <div class="vl" style="height:10px;"></div>
 
-            <!-- Connector from Hub to Spokes -->
-            <div class="v-line" style="height:14px;"></div>
-            <div style="width:72%;height:2px;background:#bbb;position:relative;">
-                <div style="position:absolute;top:0;left:16%;width:2px;height:14px;background:#bbb;"></div>
-                <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:14px;background:#bbb;"></div>
-                <div style="position:absolute;top:0;right:16%;width:2px;height:14px;background:#bbb;"></div>
+            <!-- Ops Programme Manager -->
+            <div class="node" style="min-width:155px;">
+                <div class="r">Ops Programme Manager</div>
+                <div class="l">Senior Manager · governance, rotational programme</div>
             </div>
-            <div style="height:14px;"></div>
+            <div class="vl" style="height:10px;"></div>
 
-            <!-- SPOKES -->
-            <div class="spokes-grid" style="width:100%;">
+            <!-- Hub horizontal bar -->
+            <div style="width:88%;height:2px;background:#bbb;position:relative;">
+                <div style="position:absolute;top:0;left:12%;width:2px;height:10px;background:#bbb;"></div>
+                <div style="position:absolute;top:0;left:37%;width:2px;height:10px;background:#bbb;"></div>
+                <div style="position:absolute;top:0;left:63%;width:2px;height:10px;background:#bbb;"></div>
+                <div style="position:absolute;top:0;left:88%;width:2px;height:10px;background:#bbb;"></div>
+            </div>
+            <div style="height:10px;"></div>
 
-                <!-- Revenue Spoke -->
-                <div class="spoke-col">
-                    <div class="spoke-label">Revenue Spoke</div>
-                    <div class="spoke-node">
-                        <div class="role">Revenue Ops Lead</div>
-                        <div class="level">Senior Ops Specialist</div>
+            <!-- Four pods row -->
+            <div style="display:flex;gap:8px;width:88%;align-items:flex-start;">
+
+                <!-- AI & Automation Pod -->
+                <div class="pod" style="flex:1;">
+                    <div class="pod-label">AI &amp; Automation</div>
+                    <div class="node" style="width:100%;">
+                        <div class="r">Automation Lead</div>
+                        <div class="l">Senior / Staff</div>
                     </div>
-                    <div class="v-line"></div>
-                    <div style="display:flex;gap:6px;width:100%;justify-content:center;">
-                        <div class="node hire" style="min-width:110px;">
-                            <div class="role">Revenue Ops Associate</div>
-                            <div class="level">Associate</div>
-                            <span class="hire-badge">HIRE</span>
-                        </div>
-                    </div>
-                    <div class="v-line" style="background:#9B59B6;"></div>
-                    <div class="node dotted-node" style="width:90%;">
-                        <div class="role">GTM Engineer</div>
-                        <div class="level">Clay &amp; outbound tooling</div>
-                        <span class="dotted-badge">DOTTED · Reports to CRO</span>
+                    <div class="vl" style="height:7px;"></div>
+                    <div class="node hire" style="width:100%;">
+                        <div class="r">Automation Analyst</div>
+                        <div class="l">Analyst</div>
+                        <span class="badge hire">HIRE</span>
                     </div>
                 </div>
 
-                <!-- Customer Spoke -->
-                <div class="spoke-col">
-                    <div class="spoke-label">Customer Spoke</div>
-                    <div class="spoke-node">
-                        <div class="role">Customer Ops Strategist</div>
-                        <div class="level">Senior · AM programme design</div>
+                <!-- Data & Analytics Pod -->
+                <div class="pod" style="flex:1;">
+                    <div class="pod-label">Data &amp; Analytics</div>
+                    <div class="node hire" style="width:100%;">
+                        <div class="r">Analytics Lead</div>
+                        <div class="l">Senior Analyst</div>
+                        <span class="badge hire">HIRE</span>
                     </div>
-                    <div class="v-line"></div>
-                    <div style="display:flex;gap:6px;width:100%;justify-content:center;">
-                        <div class="node hire" style="min-width:106px;">
-                            <div class="role">Customer Ops Owner</div>
-                            <div class="level">Mid · Daily AM execution</div>
-                            <span class="hire-badge">HIRE</span>
-                        </div>
-                        <div class="node hire" style="min-width:90px;">
-                            <div class="role">CS Ops</div>
-                            <div class="level">Mid · Customer side</div>
-                            <span class="hire-badge">HIRE</span>
-                        </div>
-                    </div>
-                    <div class="v-line" style="background:#9B59B6;"></div>
-                    <div class="node dotted-node" style="width:90%;">
-                        <div class="role">Zendesk Specialist</div>
-                        <div class="level">Zendesk admin &amp; workflow</div>
-                        <span class="dotted-badge">DOTTED · Sits in CS</span>
+                    <div class="vl" style="height:7px;"></div>
+                    <div class="node" style="width:100%;">
+                        <div class="r">Data Analyst</div>
+                        <div class="l">Analyst · rotational feed</div>
                     </div>
                 </div>
 
-                <!-- Marketing Spoke -->
-                <div class="spoke-col">
-                    <div class="spoke-label">Marketing Spoke</div>
-                    <div class="spoke-node">
-                        <div class="role">Marketing Ops Lead</div>
-                        <div class="level">Senior Ops Specialist</div>
+                <!-- Systems & CRM -->
+                <div class="pod" style="flex:1;">
+                    <div class="pod-label">Systems &amp; CRM</div>
+                    <div class="node hire" style="width:100%;">
+                        <div class="r">Systems &amp; CRM Specialist</div>
+                        <div class="l">Mid-level</div>
+                        <span class="badge hire">HIRE</span>
                     </div>
-                    <div class="v-line"></div>
-                    <div class="node hire" style="width:90%;">
-                        <div class="role">Marketing Ops Associate</div>
-                        <div class="level">Associate</div>
-                        <span class="hire-badge">HIRE</span>
+                </div>
+
+                <!-- Finance Ops Pod -->
+                <div class="pod" style="flex:1;">
+                    <div class="pod-label">Finance Ops</div>
+                    <div class="node" style="width:100%;">
+                        <div class="r">Finance &amp; Ops Analyst</div>
+                        <div class="l">Junior · finance liaison</div>
+                    </div>
+                    <div class="vl" style="height:7px;"></div>
+                    <div class="node" style="width:100%;">
+                        <div class="r">People &amp; Legal Support</div>
+                        <div class="l">Junior</div>
+                    </div>
+                    <div class="vl" style="height:7px;background:#7B5EA7;"></div>
+                    <div class="node dotted-node" style="width:100%;">
+                        <div class="r">Security Lead</div>
+                        <div class="l">Sits in Legal</div>
+                        <span class="badge dotted">DOTTED</span>
                     </div>
                 </div>
 
             </div>
+
+            <!-- External Finance box below Finance pod -->
+            <div style="display:flex;justify-content:flex-end;width:88%;margin-top:6px;">
+                <div style="width:23%;display:flex;flex-direction:column;align-items:center;">
+                    <div class="vl" style="height:8px;background:#999;"></div>
+                    <div class="node" style="width:100%;border-color:#999;background:#f5f5f5;">
+                        <div class="r" style="color:#555;">Finance Director</div>
+                        <div class="l">Finance Dept</div>
+                        <span class="badge external">EXTERNAL</span>
+                    </div>
+                    <div class="vl" style="height:6px;background:#999;"></div>
+                    <div class="node" style="width:100%;border-color:#999;background:#f5f5f5;">
+                        <div class="r" style="color:#555;">Senior Finance Manager</div>
+                        <div class="l">Reports to Finance Director</div>
+                        <span class="badge external">EXTERNAL</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="slide-number">1 / 2</div>
-        <div class="nav-dots">
-            <div class="nav-dot active" data-slide="0"></div>
-            <div class="nav-dot" data-slide="1"></div>
+        <!-- SPOKES COLUMN -->
+        <div style="width:46%;display:flex;flex-direction:column;justify-content:flex-start;gap:12px;padding-top:0;">
+
+            <div style="text-align:center;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--zinc-gray);margin-bottom:2px;">Spokes</div>
+
+            <!-- Growth Ops Spoke -->
+            <div style="display:flex;flex-direction:column;align-items:center;">
+                <div class="spoke-chip">Growth Ops Spoke</div>
+                <div class="node spoke-head">
+                    <div class="r">Growth Ops Lead</div>
+                    <div class="l">Senior · Revenue + Marketing</div>
+                </div>
+                <div class="vl" style="height:7px;"></div>
+                <div style="display:flex;gap:7px;width:100%;">
+                    <div class="node hire" style="flex:1;">
+                        <div class="r">Revenue Analyst</div>
+                        <div class="l">Embedded · Sales/SDR</div>
+                        <span class="badge hire">HIRE</span>
+                    </div>
+                    <div class="node hire" style="flex:1;">
+                        <div class="r">Marketing Analyst</div>
+                        <div class="l">Embedded · Demand gen</div>
+                        <span class="badge hire">HIRE</span>
+                    </div>
+                </div>
+                <div class="vl" style="height:7px;background:var(--dotted-color);"></div>
+                <div class="node dotted-node" style="width:100%;">
+                    <div class="r">GTM Engineer</div>
+                    <div class="l">Clay &amp; outbound tooling · Reports to CRO · Fortnightly sync</div>
+                    <span class="badge dotted">DOTTED</span>
+                </div>
+            </div>
+
+            <!-- Customer Ops Spoke -->
+            <div style="display:flex;flex-direction:column;align-items:center;">
+                <div class="spoke-chip">Customer Ops Spoke</div>
+                <div class="node spoke-head">
+                    <div class="r">Customer Ops Strategist</div>
+                    <div class="l">Senior · AM programme design</div>
+                </div>
+                <div class="vl" style="height:7px;"></div>
+                <div style="display:flex;gap:7px;width:100%;">
+                    <div class="node hire" style="flex:1;">
+                        <div class="r">Customer Ops Owner</div>
+                        <div class="l">Mid · Daily AM execution</div>
+                        <span class="badge hire">HIRE</span>
+                    </div>
+                    <div class="node hire" style="flex:1;">
+                        <div class="r">CS Ops</div>
+                        <div class="l">Mid · Customer side</div>
+                        <span class="badge hire">HIRE</span>
+                    </div>
+                </div>
+                <div class="vl" style="height:7px;background:var(--dotted-color);"></div>
+                <div class="node dotted-node" style="width:100%;">
+                    <div class="r">Zendesk Specialist</div>
+                    <div class="l">Zendesk admin &amp; workflow · Sits in CS</div>
+                    <span class="badge dotted">DOTTED</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- ══════════════════════════════════════════
-         SLIDE 2: SUMMARY
-    ══════════════════════════════════════════ -->
-    <div class="slide summary-slide" style="justify-content:flex-start;">
-        <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="100" height="34">
-                <defs><linearGradient id="zg2" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs>
-                <rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/>
-                <path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/>
-                <polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/>
-                <path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/>
-                <rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/>
-                <path fill="url(#zg2)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/>
-                <polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/>
-            </svg>
-        </div>
-
-        <h1 style="margin-top:50px;">Core Ops at <span>50M ARR</span></h1>
-        <div class="subtitle">Hub &amp; Spoke Model — End State 2027</div>
-
-        <div class="summary-grid">
-            <div class="summary-card">
-                <div class="card-num">1</div>
-                <h3>Hub — 7 People</h3>
-                <p>Head of Ops · Operations Lead · Systems &amp; CRM Specialist · AI &amp; Automation Lead · Automation Analyst · Data &amp; Analytics Lead · 2× Ops Associates</p>
-                <div>
-                    <span class="tag">Systems</span>
-                    <span class="tag">Data Warehouse</span>
-                    <span class="tag">AI</span>
-                    <span class="tag">Internal Projects</span>
-                </div>
-            </div>
-
-            <div class="summary-card">
-                <div class="card-num">2</div>
-                <h3>Three Spokes — Embedded in GTM</h3>
-                <p>Revenue Spoke sits with Sales &amp; Outbound. Customer Spoke owns AM ops and CS ops. Marketing Spoke supports campaign &amp; attribution ops.</p>
-                <div>
-                    <span class="tag">Revenue</span>
-                    <span class="tag">Customer</span>
-                    <span class="tag">Marketing</span>
-                </div>
-            </div>
-
-            <div class="summary-card">
-                <div class="card-num">3</div>
-                <h3>7 Key Hires</h3>
-                <p>Systems &amp; CRM Specialist · Automation Analyst · Customer Ops Strategist · Customer Ops Owner · CS Ops · Revenue Ops Associate · Marketing Ops Associate</p>
-                <div>
-                    <span class="tag" style="background:#fff5f5;color:#FF6B6B;border:1px dashed #FF6B6B;">Priority: Customer &amp; Hub</span>
-                </div>
-            </div>
-
-            <div class="summary-card">
-                <div class="card-num">4</div>
-                <h3>Dotted Line Governance</h3>
-                <p>GTM Engineer (Clay, reports to CRO) and Zendesk Specialist (sits in CS) operate to Core Ops standards — same data schema, shared roadmap review — without changing reporting lines.</p>
-                <div>
-                    <span class="tag" style="background:#f8f4ff;color:#9B59B6;border:1px dashed #9B59B6;">GTM Engineer</span>
-                    <span class="tag" style="background:#f8f4ff;color:#9B59B6;border:1px dashed #9B59B6;">Zendesk Specialist</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="bottom-note">
-            <strong>~14 people in Core Ops</strong> · supporting <strong>250+ headcount</strong> at 50M ARR · Rotational associate programme feeds future Spoke hires
-        </div>
-
-        <div class="slide-number">2 / 2</div>
-        <div class="nav-dots">
-            <div class="nav-dot" data-slide="0"></div>
-            <div class="nav-dot active" data-slide="1"></div>
-        </div>
+    <div class="slide-number">1 / 2</div>
+    <div class="nav-dots">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
     </div>
-
 </div>
 
+<!-- ════════════════════════════════════
+     SLIDE 2 — SUMMARY
+════════════════════════════════════ -->
+<div class="slide">
+    <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 975 330" width="95" height="32"><defs><linearGradient id="zg2" x1="2448.23" y1="-1225.9" x2="2688.74" y2="-1225.9" gradientTransform="translate(-1061.69 -2405.72) rotate(90)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00ffce"/><stop offset="1" stop-color="#0ee6bd"/></linearGradient></defs><rect width="975" height="330" rx="39.97" ry="39.97" fill="#000"/><path fill="#fff" d="M867.21,177.56h51.57c-8.24-28.23-39.82-45.02-85.02-45.02-23.25,0-44.66,4.96-60.3,13.95-18.2,10.47-27.82,26.14-27.82,45.29s8.7,34.38,25.87,44.54c15.29,9.05,36.81,13.83,62.25,13.83,57.75,0,77.55-24,84.31-39.77h-52.1c-7,8.13-18.27,12.25-33.52,12.25-22.81,0-36.97-11.82-36.97-30.85,0-9.9,3.97-18.15,11.49-23.86,6.67-5.07,15.87-7.86,25.92-7.86,16.51,0,30.11,6.98,34.32,17.49Z"/><polygon fill="#fff" points="318.42 201.75 318.42 245.79 490.72 245.79 490.72 214.33 373.26 214.33 490.72 127.16 490.72 83.12 321.45 83.12 320.65 114.58 435.52 114.58 318.42 201.75"/><path fill="#fff" d="M656.02,159.63c19.32,0,30.85,11.04,30.85,29.54v56.62h48.53l.43-61.88c.1-13.86-4.17-25.24-12.69-33.83-10.38-10.46-26.92-16.22-46.56-16.22-24.81,0-45,8.76-56.85,24.66l-1.96,2.63-5.83-23.79h-40.54v108.44h48.52v-50.5c0-22,13.83-35.66,36.1-35.66Z"/><rect fill="#fff" x="506.15" y="137.36" width="48.95" height="108.44"/><path fill="url(#zg2)" d="M269.42,217.91V107.63c0-3.57-1.9-6.87-4.99-8.65l-95.21-55.12c-3.1-1.79-6.92-1.79-10.02,0L63.98,98.97c-3.09,1.79-4.99,5.09-4.99,8.65v110.28c0,3.57,1.9,6.87,4.99,8.65l95.21,55.12c3.1,1.79,6.92,1.79,10.02,0l95.21-55.12c3.09-1.79,4.99-5.09,4.99-8.65Z"/><polygon points="148.75 91.91 107 116.24 107 133.18 140.53 113.61 140.7 113.78 114.89 161.12 114.89 179.04 172.1 145.83 172.26 146 127.38 209.78 127.38 230 245.75 161.29 227.83 150.93 161.41 189.89 161.25 189.73 203.33 127.42 188.21 118.54 136.59 148.63 136.42 148.46 163.39 100.46 148.75 91.91"/></svg>
+    </div>
+
+    <div style="margin-top:46px;">
+        <div style="font-size:36px;font-weight:700;margin-bottom:5px;">Core Ops at <span style="color:#00c9a0;">50M ARR</span></div>
+        <div style="font-size:15px;color:var(--zinc-gray);margin-bottom:22px;">Hub &amp; Spoke Model — End State 2027</div>
+    </div>
+
+    <div class="sum-grid">
+        <div class="sum-card">
+            <div class="cn">1</div>
+            <h3>Hub — 4 Pods</h3>
+            <p>AI &amp; Automation · Data &amp; Analytics · Systems &amp; CRM · Finance Ops. All technical build and data work stays here — Spokes are consumers, not builders.</p>
+            <div>
+                <span class="tag">Warehouse</span><span class="tag">AI</span><span class="tag">HubSpot</span><span class="tag">Finance liaison</span>
+            </div>
+        </div>
+
+        <div class="sum-card">
+            <div class="cn">2</div>
+            <h3>Two Spokes — GTM Aligned</h3>
+            <p><strong>Growth Ops</strong> serves Revenue + Marketing together — both top-of-funnel, one structured lead setting the agenda. <strong>Customer Ops</strong> owns AM programme design and CS ops.</p>
+            <div>
+                <span class="tag">Growth Ops</span><span class="tag">Customer Ops</span>
+            </div>
+        </div>
+
+        <div class="sum-card">
+            <div class="cn">3</div>
+            <h3>7 Key Hires</h3>
+            <p>Analytics Lead · Automation Analyst · Systems &amp; CRM Specialist · Customer Ops Owner · CS Ops · Revenue Analyst · Marketing Analyst</p>
+            <div>
+                <span class="tag" style="background:#fff5f6;color:var(--hire-color);">Priority: Analytics Lead + Customer</span>
+            </div>
+        </div>
+
+        <div class="sum-card">
+            <div class="cn">4</div>
+            <h3>Dotted Line Governance</h3>
+            <p>GTM Engineer (CRO), Zendesk Specialist (CS), and Security Lead (Legal) operate to Core Ops standards via fortnightly syncs and roadmap reviews — reporting lines unchanged.</p>
+            <div>
+                <span class="tag" style="background:#f5f2ff;color:var(--dotted-color);">GTM Engineer</span>
+                <span class="tag" style="background:#f5f2ff;color:var(--dotted-color);">Zendesk</span>
+                <span class="tag" style="background:#f5f2ff;color:var(--dotted-color);">Security Lead</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-note">
+        <strong>~15 people in Core Ops</strong> · Finance Director + Senior Finance Manager sit in Finance Dept (external) · Rotational programme feeds Data &amp; Analytics pod · Supporting <strong>250+ headcount at 50M ARR</strong>
+    </div>
+
+    <div class="slide-number">2 / 2</div>
+    <div class="nav-dots">
+        <div class="nav-dot" data-slide="0"></div>
+        <div class="nav-dot active" data-slide="1"></div>
+    </div>
+</div>
+
+</div>
 <script>
     const slides = document.querySelectorAll('.slide');
-    const dotGroups = document.querySelectorAll('.nav-dot');
     let current = 0;
-
     function showSlide(n) {
         slides[current].classList.remove('active');
         current = (n + slides.length) % slides.length;
@@ -643,12 +412,10 @@
             d.classList.toggle('active', parseInt(d.dataset.slide) === current);
         });
     }
-
     document.addEventListener('keydown', e => {
         if (e.key === 'ArrowRight' || e.key === ' ') showSlide(current + 1);
         if (e.key === 'ArrowLeft') showSlide(current - 1);
     });
-
     document.querySelectorAll('.nav-dot').forEach(d => {
         d.addEventListener('click', () => showSlide(parseInt(d.dataset.slide)));
     });
